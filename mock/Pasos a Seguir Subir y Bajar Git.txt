@@ -1,0 +1,43 @@
+--Subir archivos a GitHub (desde VS Code o terminal)
+
+Abrir la carpeta del proyecto en Visual Studio Code.
+
+1)Inicializar Git en tu proyecto:
+
+git init
+
+
+2)Conectar tu proyecto a GitHub (usando la URL de tu repo):
+
+git remote add origin https://github.com/usuario/mi-repo.git
+
+
+3)Agregar archivos al seguimiento:
+
+git add .
+
+
+4)Crear un commit con los cambios:
+
+git commit -m "Subo mi proyecto"
+
+
+5)Subir los archivos a GitHub:
+
+git branch -M main
+git push -u origin main
+
+
+👉 Con esto, tus archivos ya estarán en tu repositorio en GitHub.
+
+🔹 Descargar archivos de GitHub
+✅ Opción 1: Clonar un repositorio (para trabajar con Git)
+
+Copiá la URL del repo (ej: https://github.com/JoaquinSalguero123/PaginaDeViajes).
+
+En tu terminal escribí:
+
+git clone https://github.com/JoaquinSalguero123/PaginaDeViajes
+
+
+Se descargará la carpeta del proyecto completa.
