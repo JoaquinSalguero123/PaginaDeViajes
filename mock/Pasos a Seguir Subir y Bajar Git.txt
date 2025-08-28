@@ -41,3 +41,27 @@ git clone https://github.com/JoaquinSalguero123/PaginaDeViajes
 
 
 Se descargará la carpeta del proyecto completa.
+
+---------------------------
+
+
+✨ Resumen rápido
+
+Subir (upload):
+
+git init
+git add .
+git commit -m "mensaje"
+git branch -M main
+git remote add origin URL_DEL_REPO
+git push -u origin main
+
+
+Bajar (download):
+
+Con Git: git clone URL_DEL_REPO
+
+Sin Git: Descargar ZIP desde la web de GitHub
+
+
+---------------------------
