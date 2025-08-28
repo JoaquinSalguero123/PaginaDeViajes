@@ -20,6 +20,7 @@ git push
 
 🔹 Bajar cambios desde GitHub
     -Para actualizar tu proyecto con lo que está en GitHub:
+    - IMPORTANTE: NO SE DEBE ESTAR PARADO EN NINGUNA CARPETA DEL PROYECTO AL EJECUTAR ESTE COMANDO
 
 git pull origin main
 
