@@ -143,3 +143,12 @@ footer {
   font-size: 14px;
   text-shadow: 1px 1px 3px black;
 }
+
+
+/*Logo Empersa*/
+#LogoEmpresa{
+  width: 150px;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 35px;
+}
