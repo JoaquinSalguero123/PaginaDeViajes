@@ -1,0 +1,145 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Slider de fondo */
+.background-slider {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.logo-container img {
+  width: 120px;
+  animation: bounceIn 1s ease;
+}
+
+@keyframes bounceIn {
+  0% {transform: scale(0.5); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+/* Formulario */
+form {
+  max-width: 420px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Cambiar entre login y registro */
+.form-section {
+  transition: all 0.5s ease;
+}
+.hidden {
+  display: none;
+}
+
+fieldset {
+  border: none;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.5);
+  outline: none;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.8);
+}
+
+input:focus, select:focus {
+  border-color: #74ebd5;
+  box-shadow: 0 0 10px #74ebd5;
+}
+
+/* Botones generales */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #74ebd5, #acb6e5);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Selector de modo (dentro del formulario) */
+.mode-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.mode-selector button {
+  width: 48%;
+  background: rgba(255,255,255,0.6);
+  color: #333;
+}
+
+.mode-selector button.active {
+  background: linear-gradient(90deg, #74ebd5, #acb6e5);
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  color: #fff;
+  font-size: 14px;
+  text-shadow: 1px 1px 3px black;
+}
