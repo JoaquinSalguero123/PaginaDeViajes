@@ -10,7 +10,6 @@ git init                           # Inicializar git en la carpeta
 git add .                          # Agregar todos los archivos
 git commit -m "Primer commit"      # Guardar cambios en local
 git branch -M main                 # Asegurar rama main
-git remote add origin https://github.com/JoaquinSalguero123/PaginaDeViajes # Conectar con GitHub
 git push -u origin main            # Subir a GitHub
 
 
@@ -25,7 +24,8 @@ git push
     -Para actualizar tu proyecto con lo que está en GitHub:
     - IMPORTANTE: NO SE DEBE ESTAR PARADO EN NINGUNA CARPETA DEL PROYECTO AL EJECUTAR ESTE COMANDO
     - PARARSE SOBRE LA CARPETA LOCAL QUE CONTENGA EL PROYECTO
-
+git init    
+git remote add origin https://github.com/JoaquinSalguero123/PaginaDeViajes # Conectar con GitHub
 git pull origin main
 
 
