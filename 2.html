@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="Prueba.js"></script>
+    <title>Generar-QR</title>
+</head>
+<body>
+    <header>
+        <fieldset class="form-container">
+            <img src="Img/Logo-Empresa.png" alt="Logo-Empresa"><br>
+        </fieldset>
+    </header>
+
+    <main>
+        <form action="" method="get">
+            
+            <fieldset class="form-container">
+                <legend for="QR_Nombre">Nombre Completo</legend>
+                <input type="text" name="QR_Nombre" id="QR_Nombre" maxlength="50" placeholder="Ingrese su nombre"><br>    
+            </fieldset>
+    
+            <fieldset class="form-container">
+                <legend for="QR_Apellido">Apellido</legend>
+                <input type="text" name="QR_Apellido" id="QR_Apellido" maxlength="50"placeholder="Ingrese su apellido"><br>    
+            </fieldset>
+            
+            <fieldset class="form-container">
+                <legend for="QR_DNI">Numero de Documento</legend>
+                <input type="text" name="QR_DNI" id="QR_DNI" maxlength="10" placeholder="Ingrese su DNI"><br>    
+            </fieldset>
+
+            <fieldset class="form-container">
+                <legend for="QR_FechaNacimiento">Fecha de Nacimiento</legend>
+                <input type="date" name="QR_FechaNacimiento" id="QR_FechaNacimiento" placeholder="Fecha de nacimiento dd/mm/yyyy"><br>    
+            </fieldset>
+            
+            <fieldset class="form-container">
+                <legend for="QR_Genero">Seleccione su género</legend>
+                <select name="QR_Genero" id="QR_Genero">
+                    <option value="1">Masculino</option>
+                    <option value="2">Femenino</option>
+                    <option value="3">Otro</option>
+                </select><br>    
+            </fieldset>
+    
+            <fieldset class="form-container">
+                <legend for="QR_Email">Ingrese su Email</legend>
+                <input type="email" name="QR_Email" id="QR_Email" placeholder="Ingrese su Email"><br>    
+            </fieldset>
+    
+            <fieldset class="form-container">
+                <legend for="QR_EmailConfirmacion">Confirme su Email</legend>
+                <input type="email" name="QR_EmailConfirmacion" id="QR_EmailConfirmacion" placeholder="Ingrese su Email nuevamente"><br>    
+            </fieldset>
+
+            <fieldset for="QR_Boton_Enviar">
+                    <button id="QR_Boton_Enviar" type="submit">Enviar</button>
+            </fieldset>
+
+        </form>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
