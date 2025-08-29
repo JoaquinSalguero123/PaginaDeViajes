@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Validación básica de email
   registerForm.addEventListener("submit", (e) => {
-    const email = document.getElementById("QR_Email").value;
-    const confirmEmail = document.getElementById("QR_EmailConfirmacion").value;
+    const email = document.getElementById("Email").value;
+    const confirmEmail = document.getElementById("EmailConfirmacion").value;
     if (email !== confirmEmail) {
       e.preventDefault();
       alert("⚠️ Los emails no coinciden.");
