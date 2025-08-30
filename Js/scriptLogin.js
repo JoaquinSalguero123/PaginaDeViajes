@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmEmail = document.getElementById("QR_EmailConfirmacion").value;
     if (email !== confirmEmail) {
       e.preventDefault();
-      alert("⚠️ Los emails no coinciden.");
+      alert("Los emails no coinciden. REVISAR");
     }
   });
 
@@ -37,4 +37,5 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = (currentIndex + 1) % slides.length;
     slides[currentIndex].classList.add("active");
   }, 6000); // cada 6s cambia la imagen
+  
 });

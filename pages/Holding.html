@@ -1,11 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Viajes - Holding</title>
+  <link rel="stylesheet" href="../CSS/stylesHolding.css">
 </head>
 <body>
-    
+  <!-- Header -->
+  <header class="header">
+    <div class="logo"> Holding Viajes</div>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#destinos">Destinos</a></li>
+        <li><a href="#formulario">Reservar</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <h1>Descubre tu próximo destino</h1>
+    <p>Viaja con nuestras marcas y vive experiencias únicas</p>
+    <a href="#formulario" class="btn">Reserva ahora</a>
+  </section>
+
+  <!-- Destinos -->
+  <section id="destinos" class="section">
+    <h2>Nuestros destinos destacados</h2>
+    <div class="destinos-grid">
+      <div class="card">
+        <img src="" alt="París">
+        <h3>París</h3>
+      </div>
+      <div class="card">
+        <img src="" alt="Tokio">
+        <h3>Tokio</h3>
+      </div>
+      <div class="card">
+        <img src="" alt="Nueva York">
+        <h3>Nueva York</h3>
+      </div>
+      <div class="card">
+        <img src="" alt="Buenos Aires">
+        <h3>Buenos Aires</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section id="formulario" class="section formulario">
+    <h2>Reserva tu viaje</h2>
+    <form id="viajeForm" novalidate>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" required>
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" required>
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" pattern="\\d{10}" required>
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="destino">Destino</label>
+          <select id="destino" required>
+            <option value="">Selecciona un destino</option>
+            <option>París</option>
+            <option>Tokio</option>
+            <option>Buenos Aires</option>
+            <option>New York</option>
+          </select>
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="fecha">Fecha de salida</label>
+          <input type="date" id="fecha" required>
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="pasajeros">Cantidad de pasajeros</label>
+          <input type="number" id="pasajeros" min="1" required>
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="marca">Marca del holding</label>
+          <select id="marca" required>
+            <option value="">Selecciona una marca</option>
+            <option>Viajes Express</option>
+            <option>Luxury Tours</option>
+            <option>EcoTravel</option>
+          </select>
+          <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="pago">Medio de pago</label>
+          <select id="pago" required>
+            <option value="">Selecciona un medio</option>
+            <option>Tarjeta de crédito</option>
+            <option>Tarjeta de débito</option>
+            <option>Transferencia</option>
+          </select>
+          <small class="error"></small>
+        </div>
+      </div>
+
+      <button type="submit" id="submitBtn" disabled>Reservar ahora</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Holding Viajes - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="../Js/scriptHolding.js"></script>
 </body>
 </html>
