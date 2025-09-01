@@ -39,3 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 6000); // cada 6s cambia la imagen
   
 });
+
+//Obtener Datos de la API de usuarios
+const url = 'https://68b229f1a860fe41fd6077dc.mockapi.io/Usuarios_Ingreso';
+const options = {
+	method: 'GET'
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.json();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
