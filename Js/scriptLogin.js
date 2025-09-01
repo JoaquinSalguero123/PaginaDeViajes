@@ -40,16 +40,16 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
-//Obtener Datos de la API de usuarios
+//Traer usuario desde MockAPI, falta realizarlo a partir de variables
 const url = 'https://68b229f1a860fe41fd6077dc.mockapi.io/Usuarios_Ingreso';
-const options = {
-	method: 'GET'
-};
 
 try {
-	const response = await fetch(url, options);
-	const result = await response.json();
-	console.log(result);
+  const response = await fetch(url);
+  const result = await response.json();
+  
+  const usuario = result.filter(u => u.UserName === 'Administrador' && u.Password === '12345678');
+  
+  console.log(usuario);
 } catch (error) {
-	console.error(error);
+  console.error(error);
 }
