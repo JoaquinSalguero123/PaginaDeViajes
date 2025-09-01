@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 6000); // cada 6s cambia la imagen
   
 });
-
+/*
 //Traer usuario desde MockAPI, falta realizarlo a partir de variables
 const url = 'https://68b229f1a860fe41fd6077dc.mockapi.io/Usuarios_Ingreso';
 
@@ -53,7 +53,7 @@ try {
 } catch (error) {
   console.error(error);
 }
-/*
+*/
 async function login() {
   const usuarioInput = document.getElementById("usuario").value;
   const passwordInput = document.getElementById("password").value;
@@ -70,7 +70,7 @@ async function login() {
     );
 
     if (usuarioEncontrado) {
-      document.getElementById("mensaje").innerText = "✅ Login exitoso, bienvenido " + usuarioEncontrado.UserName;
+      window.location.href = "/pages/Holding.html"
     } else {
       document.getElementById("mensaje").innerText = "❌ Usuario o contraseña incorrectos";
     }
@@ -78,4 +78,4 @@ async function login() {
     console.error(error);
     document.getElementById("mensaje").innerText = "⚠️ Error al conectar con la API";
   }
-}*/
+}

@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="assets/images/Logo/Navegador.jpg">
 
   <link rel="stylesheet" href="css/stylesLogin.css">
-  <script type="module" src="Js/scriptLogin.js" defer></script>
+  <script src="Js/scriptLogin.js" defer></script>
   <title>ViajesLogin</title>
 </head>
 <body>
@@ -49,8 +49,9 @@
           <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
         </fieldset>
         <fieldset class="form-container">
-          <button type="submit">Ingresar</button>
+          <button type="button" onclick="login()">Ingresar</button>
         </fieldset>
+        <p id="mensaje"></p>
       </div>
 
       <!-- REGISTRO -->
