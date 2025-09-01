@@ -30,29 +30,16 @@
   <!-- Destinos -->
   <section id="destinos" class="section">
     <h2>Nuestros destinos destacados</h2>
-    <div class="destinos-grid">
-      <div class="card">
-        <img src="" alt="París">
-        <h3>París</h3>
-      </div>
-      <div class="card">
-        <img src="" alt="Tokio">
-        <h3>Tokio</h3>
-      </div>
-      <div class="card">
-        <img src="" alt="Nueva York">
-        <h3>Nueva York</h3>
-      </div>
-      <div class="card">
-        <img src="" alt="Buenos Aires">
-        <h3>Buenos Aires</h3>
-      </div>
+    <div class="destinos-grid" id="destinosContainer">
+
+    
+      
     </div>
   </section>
 
   <!-- Formulario -->
   <section id="formulario" class="section formulario">
-    <h2>Reserva tu viaje</h2>
+    <h2> Reserva tu viaje</h2>
     <form id="viajeForm" novalidate>
       <div class="form-grid">
         <div class="form-group">
@@ -75,12 +62,7 @@
 
         <div class="form-group">
           <label for="destino">Destino</label>
-          <select id="destino" required>
-            <option value="">Selecciona un destino</option>
-            <option>París</option>
-            <option>Tokio</option>
-            <option>Buenos Aires</option>
-            <option>New York</option>
+          <select aria-placeholder="Selecciona un Destino" id="destino" required>            
           </select>
           <small class="error"></small>
         </div>

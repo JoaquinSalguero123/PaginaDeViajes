@@ -39,21 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 6000); // cada 6s cambia la imagen
   
 });
-/*
-//Traer usuario desde MockAPI, falta realizarlo a partir de variables
-const url = 'https://68b229f1a860fe41fd6077dc.mockapi.io/Usuarios_Ingreso';
 
-try {
-  const response = await fetch(url);
-  const result = await response.json();
-  
-  const usuario = result.filter(u => u.UserName === 'Administrador' && u.Password === '12345678');
-  
-  console.log(usuario);
-} catch (error) {
-  console.error(error);
-}
-*/
 async function login() {
   const usuarioInput = document.getElementById("usuario").value;
   const passwordInput = document.getElementById("password").value;
@@ -77,5 +63,27 @@ async function login() {
   } catch (error) {
     console.error(error);
     document.getElementById("mensaje").innerText = "⚠️ Error al conectar con la API";
+  }
+}
+
+
+async function Registrar() {
+  const Usuario = document.getElementById("UsuarioRegistrar").value; 
+  const NombreCompleto = document.getElementById("Nombre").value; 
+  const Apellido = document.getElementById("Apellido").value; 
+  const DNI = document.getElementById("DNI").value; 
+  const FechaNacimiento = document.getElementById("FechaNacimiento").value; 
+  const Genero = document.getElementById("Genero").value; 
+  const Email = document.getElementById("Email").value; 
+  const Password = document.getElementById("Password").value; 
+
+  const urlUsuaio = 'https://68b229f1a860fe41fd6077dc.mockapi.io/Usuarios_Ingreso';
+  const urlUsuaioDatos = 'https://68b229f1a860fe41fd6077dc.mockapi.io/Usuarios_Ingreso';
+
+  try {
+
+    
+  } catch (error) {
+    
   }
 }
