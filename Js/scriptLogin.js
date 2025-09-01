@@ -53,3 +53,29 @@ try {
 } catch (error) {
   console.error(error);
 }
+/*
+async function login() {
+  const usuarioInput = document.getElementById("usuario").value;
+  const passwordInput = document.getElementById("password").value;
+
+  const url = 'https://68b229f1a860fe41fd6077dc.mockapi.io/Usuarios_Ingreso';
+
+  try {
+    const response = await fetch(url);
+    const usuarios = await response.json();
+
+    // Buscar si existe coincidencia
+    const usuarioEncontrado = usuarios.find(
+      u => u.UserName === usuarioInput && u.Password === passwordInput
+    );
+
+    if (usuarioEncontrado) {
+      document.getElementById("mensaje").innerText = "✅ Login exitoso, bienvenido " + usuarioEncontrado.UserName;
+    } else {
+      document.getElementById("mensaje").innerText = "❌ Usuario o contraseña incorrectos";
+    }
+  } catch (error) {
+    console.error(error);
+    document.getElementById("mensaje").innerText = "⚠️ Error al conectar con la API";
+  }
+}*/
