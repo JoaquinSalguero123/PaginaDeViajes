@@ -155,6 +155,8 @@ async function Registrar() {
     const usuarios = await fetchJson(API_INGRESO);
     if (usuarios.some(u => u.UserName === datosUsuario.UserName)) {
       alert(`El nombre de usuario "${datosUsuario.UserName}" ya existe`);
+      const inputUsuario = document.getElementById("UsuarioRegistrar");
+      inputUsuario.focus();
       return;
     }
 
