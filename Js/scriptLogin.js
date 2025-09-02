@@ -16,6 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
     registerForm.querySelectorAll("input, select").forEach(input => input.disabled = showLogin);
   };
 
+  //Prueba de mail y foco
+  const inputEmail = document.getElementById("Email");
+  const inputEmailConfirmacion = document.getElementById("EmailConfirmacion");
+
+  inputEmailConfirmacion.addEventListener("input", function(){
+    const value = inputEmail.value.trim();
+    const valueConfirmacion = inputEmailConfirmacion.value.trim();
+
+    if (value !== valueConfirmacion) {
+      inputEmailConfirmacion.classList.add("error");
+    }else{
+      inputEmailConfirmacion.classList.remove("error");
+    }
+  })
+
   btnLogin.addEventListener("click", () => toggleForm(true));
   btnRegister.addEventListener("click", () => toggleForm(false));
 
@@ -32,8 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const dni = document.getElementById("DNI").value.trim();
     const fechaNacimiento = document.getElementById("FechaNacimiento").value;
     const genero = document.getElementById("Genero").value;
-    const email = document.getElementById("Email").value.trim();
-    const confirmEmail = document.getElementById("EmailConfirmacion");
     const password = document.getElementById("Password");
 
     confirmEmail.classList.remove("error")
