@@ -75,6 +75,7 @@ async function BuscarDestinos(){
       div.innerHTML = `
          <img src="${destino.Imagen}" alt="${destino.Pais}">
         <h3>${destino.Pais}</h3>
+        <h4>${destino.Ciudad}</h4>
         <h5 > <b>Asientos</b></h5> 
         <h5 id="CantidadAsientos">${destino.Asientos}</h5>    
         <br>    
