@@ -17,16 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   //Prueba de mail y foco
-  const inputUsuario = document.getElementById("UsuarioRegistrar");
-  const inputNombre = document.getElementById("Nombre");
-  const inputApellido = document.getElementById("Apellido");
-  const inputDNI = document.getElementById("DNI");
-  const inputFechaNacimiento = document.getElementById("FechaNacimiento");
-  const inputGenero = document.getElementById("Genero");
   const inputEmail = document.getElementById("Email");
   const inputEmailConfirmacion = document.getElementById("EmailConfirmacion");
   const inputPassword = document.getElementById("Password");
-  let registroAprobado = 0;
+
 
   inputEmailConfirmacion.addEventListener("input", function(){
     const value = inputEmail.value.trim();
@@ -36,11 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (value !== valueConfirmacion) {
       inputEmailConfirmacion.classList.add("error");
       mensaje.innerText = "❌ Los emails no coinciden";
-      registroAprobado = 0;
     }else{
       inputEmailConfirmacion.classList.remove("error");
       mensaje.innerText = "";
-      registroAprobado = 1;
     }
   })
 
@@ -51,46 +43,49 @@ document.addEventListener("DOMContentLoaded", () => {
     if (value.length < 6) {
       inputPassword.classList.add("error");
       mensaje.innerText = "❌ La contraseña debe tener al menos 6 caracteres";
-      registroAprobado = 0;
     }else{
       inputPassword.classList.remove("error");
       mensaje.innerText = "";
-      registroAprobado = 1;
     }
   })
+  btnLogin.addEventListener("click", () => toggleForm(true));
+  btnRegister.addEventListener("click", () => toggleForm(false));
 
   // Función de validación y registro
   window.ValidarYRegistrar = function() {
+    const mensajeMail = document.getElementById("mensajeMail");
+    const mensajePassword = document.getElementById("mensajePassword");
+    mensajeMail.innerText = "";
+    mensajePassword.innerText = "";
+
+    const usuario = document.getElementById("UsuarioRegistrar").value.trim();
+    const nombre = document.getElementById("Nombre").value.trim();
+    const apellido = document.getElementById("Apellido").value.trim();
+    const dni = document.getElementById("DNI").value.trim();
+    const fechaNacimiento = document.getElementById("FechaNacimiento").value;
+    const genero = document.getElementById("Genero").value;
+
+    confirmEmail.classList.remove("error")
+    password.classList.remove("error")
     // Validaciones
-    if (!inputUsuario.value || !inputNombre.value || !inputApellido.value || !inputDNI.value || !inputFechaNacimiento.value || !inputGenero.value || !inputEmail.value || !inputEmailConfirmacion.value || !inputPassword.value) {
+    if (!usuario || !nombre || !apellido || !dni || !fechaNacimiento || !genero || !email || !confirmEmail || !password) {
       alert("❌ Todos los campos son obligatorios") ;
-      registroAprobado = 0;
       return;
     }
 
-    if (!/^\d+$/.test(inputDNI.value.trim())) {
+    if (!/^\d+$/.test(dni)) {
       alert( "❌ DNI debe contener solo números");
-      registroAprobado = 0;
       return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputEmail.value.trim())) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       alert( "❌ Email no es válido");
-      registroAprobado = 0;
       return;
     }
-    registroAprobado = 1;
 
-    // Si todo está bien, proceder al registro
-    if (registroAprobado === 1) {
-      Registrar();
-    }
-
+    // Si todo es correcto, llamar a la función de registro
+    Registrar();
   };
-
-  // Inicialmente mostrar login
-  btnLogin.addEventListener("click", () => toggleForm(true));
-  btnRegister.addEventListener("click", () => toggleForm(false));
 
   // Slider de fondo
   let slides = document.querySelectorAll(".slide");
