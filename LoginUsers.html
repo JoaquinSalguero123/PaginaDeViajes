@@ -58,7 +58,7 @@
       <div id="registerForm" class="form-section hidden">
         <fieldset class="form-container">
           <label for="UsuarioRegistrar">Nombre de Usuario</label>
-          <input type="text" name="Usuario" id="Usuario" maxlength="30" placeholder="Elija un nombre de usuario" required>
+          <input type="text" name="Usuario" id="UsuarioRegistrar" maxlength="30" placeholder="Elija un nombre de usuario" required>
         </fieldset>
         <fieldset class="form-container">
           <label for="Nombre">Nombre Completo</label>
@@ -92,13 +92,14 @@
         <fieldset class="form-container">
           <label for="EmailConfirmacion">Confirmar Email</label>
           <input type="email" name="EmailConfirmacion" id="EmailConfirmacion" placeholder="Ingrese su Email nuevamente" required>
+          <p id="mensajeMail"></p>
         </fieldset>
         <fieldset class="form-container">
           <label for="Password">Contraseña</label>
           <input type="password" name="Password" id="Password" placeholder="Elija una contraseña" required>
         </fieldset>
         <fieldset class="form-container">
-          <button type="button" onclick="Registrar()">Registrarme</button>
+          <button type="submit" >Registrarme</button>
         </fieldset>
       </div>
 
