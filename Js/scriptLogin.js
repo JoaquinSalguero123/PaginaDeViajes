@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  sessionStorage.setItem("isLoggedIn", "false");
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
   const btnLogin = document.getElementById("btnLogin");
@@ -117,6 +118,7 @@ async function login() {
   const usuarioInput = document.getElementById("usuario").value.trim();
   const passwordInput = document.getElementById("password").value;
   const mensaje = document.getElementById("mensaje");
+  
 
   try {
     const usuarios = await fetchJson(API_INGRESO);
@@ -125,6 +127,7 @@ async function login() {
     );
 
     if (usuarioEncontrado) {
+      sessionStorage.setItem("isLoggedIn", "true");
       window.location.href = "/pages/Holding.html";
     } else {
       mensaje.innerText = "❌ Usuario o contraseña incorrectos";

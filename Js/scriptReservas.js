@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  if (sessionStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "../LoginUsers.html";
+  }
+
   const menuToggle = document.getElementById("menu-toggle");
   const nav = document.getElementById("nav");
 
@@ -60,25 +65,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function BuscarDestinos(){
-  const url = 'https://68b60f4be5dc090291b0c8e6.mockapi.io/Viajes';
+  // leer del carrito
+  let carrito = JSON.parse(localStorage.getItem("carritoViajes")) || [];
 
-  try {
-    const response = await fetch(url);
-    const Destinos = await response.json();
-    document.getElementById("destino").innerHTML = "";
+  const selectDestino = document.getElementById("destino");
+  selectDestino.innerHTML = "";
 
-    Destinos.forEach(destino => {
-      const Option = document.createElement("option");
-      Option.value = destino.id;
-      Option.textContent = destino.Pais;
-      
-      document.getElementById("destino").appendChild(Option);
-
+  if (carrito.length > 0) {
+    carrito.forEach(destino => {
+      const option = document.createElement("option");
+      option.value = destino.id;
+      option.textContent = `${destino.Pais} - ${destino.Ciudad} ($${destino.Precio})`;
+      selectDestino.appendChild(option);
     });
-
-  }catch(error){
-
+  } else {
+    // fallback: traer de la API si no hay nada en carrito
+    const url = 'https://68b60f4be5dc090291b0c8e6.mockapi.io/Viajes';
+    try {
+      const response = await fetch(url);
+      const Destinos = await response.json();
+      Destinos.forEach(destino => {
+        const option = document.createElement("option");
+        option.value = destino.id;
+        option.textContent = destino.Pais;
+        selectDestino.appendChild(option);
+      });
+    } catch (error) {
+      console.log("Error cargando destinos", error);
+    }
   }
+}
 
+
+function EliminiarLS(){
+  localStorage.clear()
 }
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda de Viajes - Holding</title>
-  <link rel="stylesheet" href="../CSS/stylesHolding.css">
+  <title>Tienda de Viajes - Reservas</title>
+  <link rel="stylesheet" href="../CSS/stylesCarrito.css">
 </head>
 <body>
   <!-- Header -->
@@ -12,8 +12,7 @@
     <div class="logo"> Holding Viajes</div>
     <nav class="nav" id="nav">
       <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#destinos">Destinos</a></li>
+        <li><a href="Holding.html">Holding</a></li>
         <li><a href="Carrito.html">Carrito</a></li>
         <li><a href="Reservas.html">Reservar</a></li>
       </ul>
@@ -21,26 +20,23 @@
     <div class="menu-toggle" id="menu-toggle">☰</div>
   </header>
 
-  <!-- Hero -->
-  <section id="inicio" class="hero">
-    <h1>Descubre tu próximo destino</h1>
-    <p>Viaja con nuestras marcas y vive experiencias únicas</p>
-    <a href="#formulario" class="btn">Reserva ahora</a>
-  </section>
-
-  <!-- Destinos -->
   <section id="destinos" class="section">
-    <h2>Nuestros destinos destacados</h2>
-    <div class="destinos-grid" id="destinosContainer">
 
+    <h2>Carrito</h2>
+    <div class="destinos-grid" id="destinosContainerCarrito">
     </div>
+    <button type="button" onclick="VaciarCarrito()" > Borrar</button>
+    <button type="button" onclick="Reservar()" > Reservar</button>
   </section>
+  
+  
 
   <!-- Footer -->
   <footer class="footer">
     <p>© 2025 Holding Viajes - Todos los derechos reservados</p>
   </footer>
 
-  <script src="../Js/scriptHolding.js"></script>
+  <script src="../Js/scriptCarrito.js" ></script>
+
 </body>
 </html>

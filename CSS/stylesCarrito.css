@@ -217,28 +217,51 @@ button[type="submit"]:hover:enabled {
 
 
 /*Boton Agregar Viaje*/
-.btn-agregar {
+button,
+.btn {
   background: linear-gradient(135deg, #0077b6, #00b4d8);
   color: #fff;
   border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  margin: 1rem 0;
   display: inline-block;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.btn-agregar:hover {
+button:hover,
+.btn:hover {
   background: linear-gradient(135deg, #023e8a, #0077b6);
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
-.btn-agregar:active {
+button:active,
+.btn:active {
   transform: scale(0.95);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled,
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+.Pais{
+  font-size: 27px; 
+
+}.Ciudad{
+  font-size: 20px; 
+}
+.Cantidad{
+  font-size: 25px;
+}
+.SubTitulo{
+ font-size: 15px; 
 }
