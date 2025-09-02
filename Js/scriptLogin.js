@@ -21,8 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Función de validación y registro
   window.ValidarYRegistrar = function() {
-    const mensaje = document.getElementById("mensajeMail");
-    mensaje.innerText = "";
+    const mensajeMail = document.getElementById("mensajeMail");
+    const mensajePassword = document.getElementById("mensajePassword");
+    mensajeMail.innerText = "";
+    mensajePassword.innerText = "";
 
     const usuario = document.getElementById("UsuarioRegistrar").value.trim();
     const nombre = document.getElementById("Nombre").value.trim();
@@ -31,9 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const fechaNacimiento = document.getElementById("FechaNacimiento").value;
     const genero = document.getElementById("Genero").value;
     const email = document.getElementById("Email").value.trim();
-    const confirmEmail = document.getElementById("EmailConfirmacion").value.trim();
-    const password = document.getElementById("Password").value;
+    const confirmEmail = document.getElementById("EmailConfirmacion");
+    const password = document.getElementById("Password");
 
+    confirmEmail.classList.remove("error")
+    password.classList.remove("error")
     // Validaciones
     if (!usuario || !nombre || !apellido || !dni || !fechaNacimiento || !genero || !email || !confirmEmail || !password) {
       alert("❌ Todos los campos son obligatorios") ;
@@ -50,13 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (email !== confirmEmail) {
-      mensaje.innerText = "❌ Los emails no coinciden";
+    if (email !== confirmEmail.value.trim()) {
+      mensajeMail.innerText = "❌ Los emails no coinciden";
+      confirmEmail.classList.add("error")
       return;
     }
 
-    if (password.length < 6) {
-      mensaje.innerText = "❌ La contraseña debe tener al menos 6 caracteres";
+    if (password.value.length < 6) {
+      mensajePassword.innerText = "❌ La contraseña debe tener al menos 6 caracteres";
+      password.classList.add("error")
       return;
     }
 
@@ -126,7 +132,7 @@ async function Registrar() {
   try {
     const usuarios = await fetchJson(API_INGRESO);
     if (usuarios.some(u => u.UserName === datosUsuario.UserName)) {
-      alert("El usuario ya existe");
+      alert(`El nombre de usuario "${datosUsuario.UserName}" ya existe`);
       return;
     }
 
