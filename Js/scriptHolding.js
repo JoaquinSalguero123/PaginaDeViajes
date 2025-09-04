@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   if (sessionStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "../LoginUsers.html";
+    window.location.href = "../LoginUsers.html";    
+    return;
   }
   const menuToggle = document.getElementById("menu-toggle");
   const nav = document.getElementById("nav");
@@ -10,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     nav.classList.toggle("active");
   });
 
+  
+  SetearBienvenidaUsuario()
   BuscarDestinos()
 
 
@@ -25,10 +28,10 @@ async function BuscarDestinos(){
     document.getElementById("destinosContainer").innerHTML = "";
 
    Destinos.forEach(destino => {
-  const div = document.createElement("div");
+   const div = document.createElement("div");
 
-  div.classList.add("card");
-  div.innerHTML = `
+    div.classList.add("card");
+    div.innerHTML = `
     <img src="${destino.Imagen}" alt="${destino.Pais}">
     <h3>${destino.Pais}</h3>
     <h4>${destino.Ciudad}</h4>  
@@ -37,10 +40,10 @@ async function BuscarDestinos(){
     <br>
     <button class="btn-agregar">Agregar a reservas</button>
     <br>
-  `;
+    `;
 
-  // botón de carrito
-  div.querySelector(".btn-agregar").addEventListener("click", () => {
+   // botón de carrito
+    div.querySelector(".btn-agregar").addEventListener("click", () => {
     agregarAReservas(destino);
   });
 
@@ -52,7 +55,19 @@ async function BuscarDestinos(){
 
   }
 
+};
+
+function SetearBienvenidaUsuario() {
+  let NameUser = sessionStorage.getItem("NameUser");
+  let TituloBienvenida = document.getElementById("BienvenidaUser");
+
+  console.log(NameUser);
+
+  if (NameUser.trim() !== "") {
+    TituloBienvenida.textContent += " " + NameUser;
+  }
 }
+
 
 function agregarAReservas(destino) {
   let carrito = JSON.parse(localStorage.getItem("carritoViajes")) || [];

@@ -82,3 +82,54 @@ async function BuscarDestinos() {
     console.error("Error al cargar destinos:", error);
   }
 }
+
+
+async function Reservar() {
+  let destinos = JSON.parse(localStorage.getItem("carritoViajes")) || [];
+
+  if (destinos.length === 0) {
+    alert("El carrito está vacío, no se puede reservar.");
+    return;
+  }
+
+  try {
+    for (let i = 0; i < destinos.length; i++) {
+      const destino = destinos[i];
+      const cantidad = destino.cantidad || 1;
+
+      const reserva = {
+        Pais: destino.Pais,
+        Ciudad: destino.Ciudad,
+        PrecioUnitario: destino.Precio,
+        ImporteTotal: cantidad * destino.Precio,
+        CantidadPasajes: cantidad,
+        Imagen: destino.Imagen,
+        ID_ViajesReserva: destino.ID_Viaje || (i + 1).toString()
+      };
+
+      // Enviar cada reserva individualmente
+      const response = await fetch("https://68b60f4be5dc090291b0c8e6.mockapi.io/ViajesReserva", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(reserva)
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al enviar la reserva de " + destino.Pais);
+      }
+
+      const data = await response.json();
+      console.log("Reserva enviada:", data);
+    }
+
+    alert("✅ Todas las reservas se guardaron con éxito.");
+    localStorage.removeItem("carritoViajes"); // Limpia el carrito
+    BuscarDestinos(); // Refresca la vista
+
+  } catch (error) {
+    console.error("Error al reservar:", error);
+    alert("❌ Ocurrió un error al procesar las reservas.");
+  }
+}

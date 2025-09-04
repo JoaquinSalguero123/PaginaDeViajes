@@ -128,6 +128,7 @@ async function login() {
 
     if (usuarioEncontrado) {
       sessionStorage.setItem("isLoggedIn", "true");
+      sessionStorage.setItem("NameUser", usuarioInput);
       window.location.href = "/pages/Holding.html";
     } else {
       mensaje.innerText = "❌ Usuario o contraseña incorrectos";

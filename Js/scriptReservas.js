@@ -1,103 +1,133 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  if (sessionStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "../LoginUsers.html";
+   if (sessionStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "../LoginUsers.html";    
+    return;
   }
 
+  // Toggle menú
   const menuToggle = document.getElementById("menu-toggle");
   const nav = document.getElementById("nav");
+  menuToggle?.addEventListener("click", () => nav.classList.toggle("active"));
 
-  menuToggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
-  });
-
-  const form = document.getElementById("viajeForm");
-  const inputs = form.querySelectorAll("input, select");
-  const submitBtn = document.getElementById("submitBtn");
-
-  function validateField(field) {
-    const errorMsg = field.parentElement.querySelector(".error");
-    let valid = true;
-
-    if (!field.value.trim()) {
-      errorMsg.textContent = "Este campo es obligatorio";
-      errorMsg.style.display = "block";
-      valid = false;
-    } else if (field.id === "telefono" && !/^\d{10}$/.test(field.value)) {
-      errorMsg.textContent = "Ingrese un teléfono válido (10 dígitos)";
-      errorMsg.style.display = "block";
-      valid = false;
-    } else {
-      errorMsg.textContent = "";
-      errorMsg.style.display = "none";
-    }
-
-    return valid;
-  }
-
-  function checkForm() {
-    let allValid = true;
-    inputs.forEach(input => {
-      if (!validateField(input)) allValid = false;
-    });
-    submitBtn.disabled = !allValid;
-  }
-
-  inputs.forEach(input => {
-    input.addEventListener("input", () => {
-      validateField(input);
-      checkForm();
-    });
-  });
-
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    alert("¡Reserva realizada con éxito!");
-    form.reset();
-    submitBtn.disabled = true;
-  });
-
-
-  BuscarDestinos()
-
-
+  // Cargar reservas desde la API
+  cargarReservas();
 });
 
+async function cargarReservas() {
+  const contenedor = document.getElementById("contenedorReservas");
+  contenedor.innerHTML = "";
 
-async function BuscarDestinos(){
-  // leer del carrito
-  let carrito = JSON.parse(localStorage.getItem("carritoViajes")) || [];
+  try {
+    const response = await fetch("https://68b60f4be5dc090291b0c8e6.mockapi.io/ViajesReserva");
+    const reservas = await response.json();
 
-  const selectDestino = document.getElementById("destino");
-  selectDestino.innerHTML = "";
+    reservas.forEach(reserva => {
+      const card = document.createElement("div");
+      card.classList.add("reserva-card");
 
-  if (carrito.length > 0) {
-    carrito.forEach(destino => {
-      const option = document.createElement("option");
-      option.value = destino.id;
-      option.textContent = `${destino.Pais} - ${destino.Ciudad} ($${destino.Precio})`;
-      selectDestino.appendChild(option);
-    });
-  } else {
-    // fallback: traer de la API si no hay nada en carrito
-    const url = 'https://68b60f4be5dc090291b0c8e6.mockapi.io/Viajes';
-    try {
-      const response = await fetch(url);
-      const Destinos = await response.json();
-      Destinos.forEach(destino => {
-        const option = document.createElement("option");
-        option.value = destino.id;
-        option.textContent = destino.Pais;
-        selectDestino.appendChild(option);
+      card.innerHTML = `
+        <img src="${reserva.Imagen}" alt="${reserva.Pais}">
+        <h3>${reserva.Pais} - ${reserva.Ciudad}</h3>
+        <p><strong>Precio Por Asiento:</strong> $${reserva.PrecioUnitario}</p>
+        <p><strong>Asientos :</strong> ${reserva.CantidadPasajes}</p>
+        <p><strong>Importe Total :</strong> ${reserva.ImporteTotal}</p>
+        <form class="form-reserva">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nombre-${reserva.id}">Nombre completo</label>
+              <input type="text" id="nombre-${reserva.id}" required>
+              <small class="error">Campo requerido</small>
+            </div>
+
+            <div class="form-group">
+              <label for="email-${reserva.id}">Correo electrónico</label>
+              <input type="email" id="email-${reserva.id}" required>
+              <small class="error">Campo requerido</small>
+            </div>
+
+            <div class="form-group">
+              <label for="telefono-${reserva.id}">Teléfono</label>
+              <input type="tel" id="telefono-${reserva.id}" pattern="\\d{10}" required>
+              <small class="error">Campo requerido</small>
+            </div>
+
+            <div class="form-group">
+              <label for="marca-${reserva.id}">Marca del Aerolínea</label>
+              <select id="marca-${reserva.id}" required>
+                <option value="">Selecciona una marca</option>
+                <option>Viajes Express</option>
+                <option>Luxury Tours</option>
+                <option>EcoTravel</option>
+              </select>
+              <small class="error">Campo requerido</small>
+            </div>
+
+            <div class="form-group">
+              <label for="pago-${reserva.id}">Medio de pago</label>
+              <select id="pago-${reserva.id}" required>
+                <option value="">Selecciona un medio</option>
+                <option>Tarjeta de crédito</option>
+                <option>Tarjeta de débito</option>
+                <option>Transferencia</option>
+              </select>
+              <small class="error">Campo requerido</small>
+            </div>
+          </div>
+
+          <button type="submit">Reservar ahora</button>
+          <button type="button" class="cancelar">Cancelar</button>
+        </form>
+      `;
+
+      // Función para eliminar de la API y del DOM
+      const eliminarReserva = async () => {
+        try {
+          await fetch(`https://68b60f4be5dc090291b0c8e6.mockapi.io/ViajesReserva/${reserva.id}`, {
+            method: "DELETE"
+          });
+        } catch (error) {
+          console.error("Error eliminando la reserva de la API:", error);
+        }
+
+        // Eliminar del DOM
+        card.remove();
+
+        // Eliminar del carrito localStorage si existe
+        let carrito = JSON.parse(localStorage.getItem("carritoViajes")) || [];
+        carrito = carrito.filter(v => v.id != reserva.id);
+        localStorage.setItem("carritoViajes", JSON.stringify(carrito));
+      };
+
+      // Manejo de Reservar
+      const form = card.querySelector(".form-reserva");
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const nombre = form.querySelector(`#nombre-${reserva.id}`).value.trim();
+        const email = form.querySelector(`#email-${reserva.id}`).value.trim();
+        const pasajeros = form.querySelector(`#pasajeros-${reserva.id}`).value;
+
+        if (!nombre || !email || !pasajeros) {
+          alert("Por favor completa todos los campos requeridos.");
+          return;
+        }
+
+        alert(`✅ Reserva confirmada para ${reserva.Ciudad}`);
+        eliminarReserva();
       });
-    } catch (error) {
-      console.log("Error cargando destinos", error);
-    }
+
+      // Manejo de Cancelar
+      const btnCancelar = card.querySelector(".cancelar");
+      btnCancelar.addEventListener("click", () => {
+        alert(`❌ Reserva cancelada para ${reserva.Ciudad}`);
+        eliminarReserva();
+      });
+
+      contenedor.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Error cargando reservas:", error);
+    contenedor.innerHTML = "<p>No se pudieron cargar las reservas.</p>";
   }
 }
-
-
-function EliminiarLS(){
-  localStorage.clear()
-}
-
