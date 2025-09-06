@@ -4,7 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../LoginUsers.html";    
     return;
   }
+  if (localStorage.getItem("DarckMode") === "true") {
+    const body = document.getElementById("BodyPages");
+    const button = document.getElementById("ButtonTema");
+    const head = document.head;
 
+    // Aplica la clase dark y actualiza el botón
+    body.classList.add("bodyDarck");
+    button.innerText = "🌙";
+
+    // Evita duplicar el <link> si ya existe
+    if (!document.getElementById("darkModeCSS")) {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "../CSS/stylesDarkModePages.css"; 
+        link.id = "darkModeCSS"; 
+        head.appendChild(link);
+    }
+  }
   // Toggle menú
   const menuToggle = document.getElementById("menu-toggle");
   const nav = document.getElementById("nav");
@@ -106,9 +123,9 @@ async function cargarReservas() {
 
         const nombre = form.querySelector(`#nombre-${reserva.id}`).value.trim();
         const email = form.querySelector(`#email-${reserva.id}`).value.trim();
-        const pasajeros = form.querySelector(`#pasajeros-${reserva.id}`).value;
+        
 
-        if (!nombre || !email || !pasajeros) {
+        if (!nombre || !email) {
           alert("Por favor completa todos los campos requeridos.");
           return;
         }
@@ -130,4 +147,34 @@ async function cargarReservas() {
     console.error("Error cargando reservas:", error);
     contenedor.innerHTML = "<p>No se pudieron cargar las reservas.</p>";
   }
+}
+
+
+function TemaPagina() {
+    const body = document.getElementById("BodyPages");
+    const button = document.getElementById("ButtonTema");
+    const darkMode = localStorage.getItem("DarckMode");
+    const head = document.head; 
+
+    const existingLink = document.getElementById("darkModeCSS");
+    if (existingLink) {
+      existingLink.remove();
+    }
+
+    if (darkMode === "true") {
+      body.classList.remove("bodyDarck");
+      button.innerText = "🔆";
+      localStorage.setItem("DarckMode", "false");
+
+    } else {
+      body.classList.add("bodyDarck");
+      button.innerText = "🌙";
+      localStorage.setItem("DarckMode", "true");
+
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "../CSS/stylesDarkModePages.css"; 
+      link.id = "darkModeCSS"; 
+      head.appendChild(link);
+    }
 }

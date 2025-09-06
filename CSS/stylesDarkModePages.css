@@ -1,0 +1,100 @@
+/* darkMode.css */
+
+/* Fondo y texto general */
+.bodyDarck {
+  background-color: #121212; /* Fondo oscuro */
+  color: #f1f1f1;           /* Texto claro */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header */
+.bodyDarck .header {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
+.bodyDarck .header .logo {
+  color: #f1f1f1;
+}
+
+.bodyDarck .header .nav ul li a {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+.bodyDarck .header .nav ul li a:hover {
+  color: #ffd700; /* Dorado al pasar el mouse */
+}
+
+/* Botón del menú hamburguesa */
+.bodyDarck .menu-toggle {
+  color: #f1f1f1;
+}
+
+/* Secciones */
+.bodyDarck .section {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.bodyDarck .section h2 {
+  color: #ffffff;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+}
+
+/* Grillas de destinos y reservas */
+.bodyDarck .destinos-grid,
+.bodyDarck .reservas-grid {
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.bodyDarck .destinos-grid div,
+.bodyDarck .reservas-grid div {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 15px;
+  transition: transform 0.2s;
+}
+
+.bodyDarck .destinos-grid div:hover,
+.bodyDarck .reservas-grid div:hover {
+  transform: scale(1.03);
+  background-color: #333;
+}
+
+/* Botones */
+#ButtonTema {
+  background-color: #333 !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #555 !important;
+  border-radius: 6px !important;
+  padding: 8px 15px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s, transform 0.2s !important;
+}
+
+#ButtonTema button:hover {
+  background-color: #444 !important;
+  transform: scale(1.05) !important;
+}
+
+/* Footer */
+.bodyDarck .footer {
+  background-color: #1e1e1e;
+  color: #bbb;
+  border-top: 1px solid #333;
+}
+
+#BienvenidaUser{
+  color: white;
+}
+
+#TextoBienvenida{
+  color: white;
+}

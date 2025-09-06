@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnLogin = document.getElementById("btnLogin");
   const btnRegister = document.getElementById("btnRegister");
 
+
+  if ( localStorage.getItem("DarckMode") == null ){
+    localStorage.setItem("DarckMode","false")
+  }
+
+
   // Cambio entre login y registro
   const toggleForm = (showLogin) => {
     btnLogin.classList.toggle("active", showLogin);
