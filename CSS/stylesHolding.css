@@ -102,9 +102,11 @@ body {
 
 /* Section */
 .section {
+  background-color: rgb(225, 239, 243);
   padding: 3rem 2rem;
   max-width: 1200px;
   margin: auto;
+  border-radius: 8px;
 }
 
 /* Destinos */
@@ -212,13 +214,14 @@ button[type="submit"]:hover:enabled {
 @media (max-width: 768px) {
   .nav {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     background: #0077b6;
     position: absolute;
     top: 70px;
     right: 0;
-    width: 200px;
+    width: 100%;
     padding: 1rem;
+    justify-content: space-around;
   }
 
   .nav.active {

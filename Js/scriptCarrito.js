@@ -70,7 +70,7 @@ function VaciarCarrito() {
 
 async function BuscarDestinos() {
   let destinos = JSON.parse(localStorage.getItem("carritoViajes")) || [];
-
+ console.log(destinos.Imagen)
   try {
     const destinosContainer = document.getElementById(
       "destinosContainerCarrito"
