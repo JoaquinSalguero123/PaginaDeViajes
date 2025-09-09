@@ -1,3 +1,5 @@
+let listaDestinos = []; // global
+
 document.addEventListener("DOMContentLoaded", () => {
   if (sessionStorage.getItem("isLoggedIn") !== "true") {
     window.location.href = "../LoginUsers.html";
@@ -34,39 +36,61 @@ document.addEventListener("DOMContentLoaded", () => {
   SetearBienvenidaUsuario();
   BuscarDestinos();
 });
-
 async function BuscarDestinos() {
   const url = "https://68b60f4be5dc090291b0c8e6.mockapi.io/Viajes";
 
   try {
     const response = await fetch(url);
-    const Destinos = await response.json();
-    document.getElementById("destinosContainer").innerHTML = "";
+    listaDestinos = await response.json(); // Guardar en la variable global
+    renderDestinos(listaDestinos);
+  } catch (error) {
+    console.error("Error al buscar destinos:", error);
+  }
+}
 
-    Destinos.forEach((destino) => {
-      const div = document.createElement("div");
+function renderDestinos(destinos) {
+  const contenedor = document.getElementById("destinosContainer");
+  contenedor.innerHTML = "";
 
-      div.classList.add("card");
-      div.innerHTML = `
-    <img src="${destino.Imagen}" alt="${destino.Pais}">
-    <h3>${destino.Pais}</h3>
-    <h4>${destino.Ciudad}</h4>  
-    <h5><b>Precio</b></h5> 
-    <h5>${destino.Precio}</h5>
-    <br>
-    <button class="btn-agregar">Agregar a Carrito</button>
-    <br>
+  destinos.forEach((destino) => {
+    const div = document.createElement("div");
+    div.classList.add("card");
+    div.innerHTML = `
+      <img src="${destino.Imagen}" alt="${destino.Pais}">
+      <h3>${destino.Pais}</h3>
+      <h4>${destino.Ciudad}</h4>  
+      <h5><b>Precio</b></h5> 
+      <h5>${destino.Precio}</h5>
+      <br>
+      <button class="btn-agregar">Agregar a Carrito</button>
+      <br>
     `;
 
-      // botón de carrito
-      div.querySelector(".btn-agregar").addEventListener("click", () => {
-        agregarAReservas(destino);
-      });
-
-      document.getElementById("destinosContainer").appendChild(div);
+    div.querySelector(".btn-agregar").addEventListener("click", () => {
+      agregarAReservas(destino);
     });
-  } catch (error) {}
+
+    contenedor.appendChild(div);
+  });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ... lo que ya tenés ...
+
+  const buscador = document.getElementById("buscadorDestinos");
+  buscador.addEventListener("input", (e) => {
+    const texto = e.target.value.toLowerCase();
+
+    const filtrados = listaDestinos.filter((destino) =>
+      destino.Pais.toLowerCase().includes(texto) ||
+      destino.Ciudad.toLowerCase().includes(texto)
+    );
+
+    renderDestinos(filtrados);
+  });
+});
+
+
 
 function SetearBienvenidaUsuario() {
   let NameUser = sessionStorage.getItem("NameUser");

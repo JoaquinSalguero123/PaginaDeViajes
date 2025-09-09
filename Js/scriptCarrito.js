@@ -64,7 +64,7 @@ function TemaPagina() {
 
 
 function VaciarCarrito() {
-  localStorage.clear();
+  localStorage.removeItem("carritoViajes");
   BuscarDestinos();
 }
 
