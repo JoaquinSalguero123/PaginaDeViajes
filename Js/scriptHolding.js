@@ -41,7 +41,7 @@ async function BuscarDestinos() {
 
   try {
     const response = await fetch(url);
-    listaDestinos = await response.json(); // Guardar en la variable global
+    listaDestinos = await response.json(); 
     renderDestinos(listaDestinos);
   } catch (error) {
     console.error("Error al buscar destinos:", error);
@@ -75,7 +75,7 @@ function renderDestinos(destinos) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ... lo que ya tenés ...
+
 
   const buscador = document.getElementById("buscadorDestinos");
   buscador.addEventListener("input", (e) => {
