@@ -28,6 +28,10 @@ git init
 git remote add origin https://github.com/JoaquinSalguero123/PaginaDeViajes # Conectar con GitHub
 git pull origin main
 
+🔹Traer cambios MERGE
+git pull origin main --rebase
+
+
 
 
 🔹 Descargar un repo (primera vez)
@@ -36,3 +40,8 @@ git pull origin main
 git https://github.com/JoaquinSalguero123/PaginaDeViajes
 
 Sin Git: Botón verde Code → Download ZIP en GitHub.
+
+
+
+🔹Crear Rama
+git checkout -b "nombre de la rama"
